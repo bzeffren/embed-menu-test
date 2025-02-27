@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic Embedded Demo</title>
+    <link rel="stylesheet" href="main.css" />
+    <script>
+      setTimeout(() => {
+        // Create banner ad element
+        const bannerAd = document.createElement("div");
+        bannerAd.id = "banner-ad";
+        bannerAd.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: cornflowerblue;
+                padding: 15px;
+                text-align: center;
+                z-index: 9999;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            `;
+
+        // Add some sample content
+        bannerAd.innerHTML = `
+                <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+                    <span>Injected Banner</span>
+                </div>
+            `;
+
+        // Add to the page
+        document.querySelector("main").appendChild(bannerAd);
+      }, 5000); // 5000ms = 5 seconds
+
+      // Wait for DOM to be loaded before creating corner widget
+      document.addEventListener("DOMContentLoaded", () => {
+        // Create bottom-left corner widget
+        const cornerWidget = document.createElement("div");
+        cornerWidget.id = "corner-widget";
+        cornerWidget.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            z-index: 9998;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            max-width: 250px;
+            font-family: Arial, sans-serif;
+            height: 200px;
+        `;
+
+        cornerWidget.innerHTML = `
+            <div style="position: relative;">
+                <h3 style="margin: 0 0 10px 0; font-size: 16px;">Quick Links</h3>
+                <ul style="margin: 0; padding: 0 0 0 20px; font-size: 14px;">
+                    <li style="margin-bottom: 5px;"><a href="#" style="color: white;">Support</a></li>
+                    <li style="margin-bottom: 5px;"><a href="#" style="color: white;">Contact</a></li>
+                    <li><a href="#" style="color: white;">FAQ</a></li>
+                </ul>
+                <button 
+                    onclick="this.parentElement.parentElement.remove()"
+                    style="position: absolute; top: -10px; right: -10px; background: #e74c3c; color: white; border: none; border-radius: 50%; width: 24px; height: 24px; cursor: pointer; font-size: 12px;">
+                    ✕
+                </button>
+            </div>
+        `;
+
+        document.body.appendChild(cornerWidget);
+      });
+    </script>
+  </head>
+  <body>
+    <header>
+      <!-- Header content can go here -->
+    </header>
+    <main>
+      <div id="script-parent">
+        <div id="node-1">THIS IS NODE 1</div>
+        <script
+          async=""
+          id="dutchie--embed__script"
+          src="https://ecomm-consumer-17059.pr.dutchie.dev/api/v2/embedded-menu/61d87b544509af00a4f6c95a.js"
+        ></script>
+        <div id="node-2">THIS IS NODE 2</div>
+      </div>
+      <div id="node-3">THIS IS NODE 3</div>
+    </main>
+    <footer>Footer</footer>
+  </body>
+</html>
