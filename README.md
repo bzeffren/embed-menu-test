@@ -1,6 +1,5 @@
-# embed-menu-test
-
 ```mermaid
+flowchart TD
 A[Entry Point] --> B[Begin Enrollment]
 
     B --> C{User Exists?}
